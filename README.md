@@ -5,6 +5,9 @@ tap for an incoming message is a single short pulse, and she misses that
 pulse more often than she notices it. She wants to stop missing the
 messages. This project sets up her iPhone and Watch so that a message from
 a family member produces a signal that repeats until she acknowledges it.
+The signal is haptic only: Cara wants no alert sound anywhere, so every
+design below is set up silent, and anything that exists to force a sound
+through silent mode (Emergency Bypass, Critical Alerts) stays off.
 Jake does the setup and, if it comes to that, the programming.
 
 ## Two platform facts that shape every design
@@ -56,9 +59,10 @@ These settings make the existing tap stronger and repeat it.
    we have not yet tested whether each repeat also re-taps the Watch. Test:
    lock the phone, send a message, do not touch anything, and wait two
    minutes for the second tap.
-3. On the iPhone, for each family member: Contacts > person > Text Tone >
-   turn on Emergency Bypass. Messages from that person then sound and
-   vibrate even in silent mode and during a Focus.
+3. (Dropped 2026-10-26: Emergency Bypass exists to force a sound through
+   silent mode, and Cara wants no sound. If it was turned on during the
+   Plan A test, turn it back off: Contacts > person > Text Tone >
+   Emergency Bypass.)
 4. If Cara uses a Work Focus: Settings > Focus > Work > add the family
    contacts to the allowed people.
 
@@ -85,12 +89,15 @@ whether the phone was in fact locked.
 Pushover is a notification relay: an iPhone app with a Watch app, plus an
 HTTPS API that anything can call. Its "emergency priority" re-sends a
 notification every 30 seconds (or any longer interval) until the recipient
-taps Acknowledge, and Pushover holds Apple's Critical Alerts entitlement,
-so its alerts can break through silent mode and Focus. The Shortcuts
-automation on Cara's phone calls the API when a family message arrives;
-her Watch then taps every 30 seconds until she acknowledges. Cost: a
-30-day free trial, then a one-time license of about five dollars per
-platform.
+taps Acknowledge. The Shortcuts automation on Cara's phone calls the API
+when a family message arrives; her Watch then taps every 30 seconds until
+she acknowledges, and with the API's silent sound option plus the Watch's
+own Silent Mode, every one of those alerts is a tap with no tone. Her
+Work Focus lets them through because the Pushover app joins the Focus's
+allowed apps, which delivers silently; Pushover also offers Critical
+Alerts, but their one function is forcing a sound through silent mode, so
+we leave that off. Cost: a 30-day free trial, then a one-time license of
+about five dollars per platform.
 
 Setup steps are in docs/plan-b-shortcuts-pushover.md.
 
@@ -99,9 +106,7 @@ Setup steps are in docs/plan-b-shortcuts-pushover.md.
 Building our own app buys deduplication (several rapid messages collapse
 into one alert), a one-tap acknowledge screen on the Watch, and no third
 party seeing the alerts. It does not buy a continuous buzz, because the
-platform limit above binds our code too, and it does not buy
-silent-mode bypass, because Apple grants the Critical Alerts entitlement
-per app on application and Pushover already has it. The architecture,
+platform limit above binds our code too. The architecture,
 the platform limits restated with sources, and the developer-account
 logistics are in docs/plan-c-watch-app.md. We build it only if Plan B
 fails Cara in practice.
@@ -115,3 +120,7 @@ fails Cara in practice.
   arrive (fix Wrist Detection and locking first, since Plan B needs
   delivery working too). Then the Plan B setup, two weeks of ordinary
   use, and only then a decision about Plan C.
+- 2026-10-26: requirement sharpened: no alert sound at all, haptics only.
+  Plan B adjusted (sound "none" in the API call, Critical Alerts left
+  off, Focus passage via allowed app, Watch in Silent Mode) and Plan A's
+  Emergency Bypass step dropped.

@@ -5,7 +5,11 @@ member's message arrives and sends one HTTPS request to Pushover's API at
 emergency priority. Pushover then delivers a notification to her iPhone
 and Watch and re-delivers it every 30 seconds until she taps Acknowledge.
 Each re-delivery is a fresh notification, so each one taps the Watch
-again. Everything below happens on Cara's devices.
+again. Cara wants persistent haptics and no alert sound at all, so the
+setup below is silent end to end: the API request names Pushover's silent
+sound (step 6), and we leave Critical Alerts off (step 4), because a
+critical alert is Apple's name for a notification that plays a sound
+through silent mode. Everything below happens on Cara's devices.
 
 ## One-time setup
 
@@ -18,10 +22,18 @@ again. Everything below happens on Cara's devices.
 3. On https://pushover.net, choose "Create an Application/API Token".
    Name it anything (for example, family-alerts). Copy the API token it
    shows; step 6 needs it too.
-4. In the Pushover iPhone app: Settings > enable Critical Alerts for
-   emergency-priority messages. iOS asks once for permission. This is
-   what lets the alert sound through silent mode and Focus; it is off by
-   default.
+4. Leave Pushover's Critical Alerts setting off (it is off by default).
+   Its one function is to force a sound through silent mode and Focus,
+   and Cara wants no sound. The repeats do not depend on it: Pushover's
+   server re-sends the notification every retry seconds whether or not
+   critical alerts are on. Two settings replace what it would have done:
+   - So the alerts survive her Work Focus: iPhone Settings > Focus >
+     Work > Apps > add Pushover to the allowed apps. An allowed app's
+     notifications deliver during the Focus, silently if they carry no
+     sound.
+   - So the Watch never sounds: on the Watch, Settings > Sounds &
+     Haptics > turn on Silent Mode. A Watch in Silent Mode alerts by
+     haptic only.
 5. Open Shortcuts on the iPhone > Automation tab > "+" > Message.
    - Sender: choose the family members. If her iOS version lets the
      Sender field hold only one contact, create one automation per
@@ -40,6 +52,12 @@ again. Everything below happens on Cara's devices.
      - priority: 2
      - retry: 30
      - expire: 600
+     - sound: none
+   - sound "none" is Pushover's silent option: the notification arrives
+     with no tone on the phone or the Watch. The Watch's tap is governed
+     by its own alert settings, not by the notification's sound, so a
+     silent notification should still tap; the first test below checks
+     exactly this before anything else is built on it.
    - priority 2 is Pushover's emergency priority. retry is the number of
      seconds between re-deliveries; 30 is the minimum Pushover accepts.
      expire is how many seconds Pushover keeps retrying before it gives
@@ -58,9 +76,11 @@ Lock the iPhone. Jake sends a text. Within a few seconds the Watch
 should tap with a Pushover notification, and it should tap again every 30
 seconds. Cara acknowledges by tapping the notification and pressing
 Acknowledge (on the Watch or the phone), or by opening the Pushover app.
-After acknowledging, the taps stop. Run the test once more with the
+After acknowledging, the taps stop. The first run also answers the
+open question from step 6: a tap with no sound anywhere means sound
+"none" behaves as intended. Then run the test twice more, once with the
 iPhone in silent mode and once inside her Work Focus, to confirm the
-Critical Alerts setting from step 4 carries the alert through both.
+allowed-app setting from step 4 carries the silent alert through both.
 
 ## What to expect in use
 
@@ -72,5 +92,7 @@ Critical Alerts setting from step 4 carries the alert through both.
   alert after that window is simply missed; raise expire toward 10800 if
   ten minutes proves too short.
 - The Watch-only-when-phone-locked condition from the README applies: an
-  unlocked phone takes the alert itself, though with Critical Alerts on,
-  the phone sounds even in silent mode, which may be signal enough.
+  unlocked phone takes the alert itself, and since the alert is silent,
+  an unlocked phone face-down on the desk gives Cara nothing at all. A
+  short Auto-Lock time (iPhone Settings > Display & Brightness) keeps
+  the phone locked and the alerts on her wrist.

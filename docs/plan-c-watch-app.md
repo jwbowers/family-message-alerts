@@ -28,11 +28,12 @@ way they bind Pushover's, as the next section spells out.
   and the accepted answers in developer-forum threads 682429 and 760402
   (https://developer.apple.com/forums/thread/682429,
   https://developer.apple.com/forums/thread/760402).
-- Critical Alerts (notifications that bypass silent mode and Focus)
-  require a per-app entitlement that Apple grants on written application,
-  normally to medical, security, and public-safety apps. A personal
-  family-texts app is unlikely to receive it. Pushover has it, which is a
-  standing reason to stay on Plan B.
+- Critical Alerts (notifications that force a sound through silent mode
+  and Focus) require a per-app entitlement that Apple grants on written
+  application, normally to medical, security, and public-safety apps. A
+  personal family-texts app is unlikely to receive it. For this project
+  the entitlement does not matter either way: Cara wants no sound, so we
+  would not use it even if we had it.
 
 So Plan C delivers the same form of signal as Plan B, a train of standard
 taps until acknowledged, with better behavior around bursts and
