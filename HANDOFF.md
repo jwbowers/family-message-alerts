@@ -120,13 +120,19 @@ secondary sources. Treat none of them as established.
 5. Is a repeated tap enough when a single tap is ignored, or does the
    signal also need to appear on her computer screen? Blocks whether
    Plan B alone is the design or whether a computer-side alert is added.
-   Needs from Jake: which computer Cara uses (Mac or Windows) and whether
-   she accepts a silent on-screen alert there.
+   Partly answered 2026-10-26: she uses a Mac, and her Watch taps for
+   many other apps. Chosen order: limit Watch taps to Messages, make Mac
+   Messages banners Persistent (both in the README section "Two free
+   steps before Plan B"), test, then Plan B only if she still misses
+   messages. Still unknown: whether Cara accepts the persistent banners,
+   and whether Pushover's desktop browser client shows emergency alerts
+   with an Acknowledge button (searched, not found in Pushover's docs).
 
 ## What to do first
 
-The delivery test is done (open question 1). Ask Jake the two things
-open question 5 needs, then walk him through the Plan B setup in
+The delivery test is done (open question 1). Ask Jake how the
+surprise-text test went after the two free steps in the README. If Cara
+still missed it, walk him through the Plan B setup in
 docs/plan-b-shortcuts-pushover.md, and record each test outcome as a
 dated line in the README's Status section.
 

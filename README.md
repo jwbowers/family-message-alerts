@@ -84,6 +84,34 @@ Detection (Watch > Settings > Passcode, must be on, or iOS sends nothing
 to the Watch), whether the Watch is passcode-locked off the wrist, and
 whether the phone was in fact locked.
 
+### Two free steps before Plan B (about fifteen minutes)
+
+The delivery test (Status, 2026-10-26) showed the tap arrives and Cara
+can feel it, but she ignores it while working at her Mac. Two free
+changes go after that attention problem directly, and we make them
+before spending an hour and five dollars on Plan B.
+
+1. Make a Watch tap mean a message. Cara's Watch taps for many apps
+   besides Messages, and when most taps can wait, ignoring a tap is the
+   sensible habit. On her iPhone: Watch app > My Watch > Notifications.
+   Under "Mirror iPhone Alerts From", turn off every app except Messages
+   (and Phone, if she wants calls on her wrist). Those apps still notify
+   on the iPhone; they stop tapping her wrist. Once Plan B runs, a
+   further option is to turn Messages off here too, so that every
+   remaining tap is a Pushover alert and therefore a family message.
+2. Put a banner on the screen she is looking at, and keep it there. On
+   her Mac: System Settings > Notifications > Messages > set the alert
+   style to Persistent (older macOS versions call it Alerts). The
+   default, Temporary, disappears after several seconds; Persistent
+   stays until she clicks it away. It is silent if Messages' sound is
+   off in the same pane. It applies to every message, not only family;
+   if non-family texts make it a nuisance, a Mac Work Focus that allows
+   only the family contacts filters them.
+
+Test as before: phone locked, Watch on, Cara at work on the Mac, Jake
+texts without warning. If she now responds within a few minutes on
+ordinary working days, stop here. If not, add Plan B.
+
 ### Plan B: Shortcuts + Pushover (recommended; no code; about an hour)
 
 Pushover is a notification relay: an iPhone app with a Watch app, plus an
@@ -133,3 +161,9 @@ fails Cara in practice.
   to appear on the computer screen, where her attention is. Jake to say
   which computer she uses and whether a silent on-screen alert is
   acceptable to her.
+- 2026-10-26: Jake: Cara uses a Mac and her Watch taps for many other
+  apps. Next step: the two free steps before Plan B (Watch taps limited
+  to Messages; persistent Messages banners on the Mac), then a surprise
+  text test on a working day. Plan B only if she still misses it.
+  Untested: whether Pushover's desktop browser client shows emergency
+  alerts with an Acknowledge button on the Mac.
