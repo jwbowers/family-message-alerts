@@ -96,7 +96,11 @@ secondary sources. Treat none of them as established.
 
 ## Open questions, each with what it blocks
 
-1. Does a notification reach Cara's Watch at all when the phone is
+1. RESOLVED 2026-10-26: yes. With the phone locked and the Watch on her
+   wrist, the tap arrives and Cara feels it when she pays attention; she
+   ignores it while working at her computer. The failure is attention,
+   not delivery or strength. The original question read: Does a
+   notification reach Cara's Watch at all when the phone is
    locked and the Watch is on her wrist? Plan A's failure ("felt
    nothing") is consistent with taps arriving too weak OR with no
    delivery, and the one-text test at the end of the README's Plan A
@@ -113,11 +117,16 @@ secondary sources. Treat none of them as established.
 4. After two weeks of use, did a named Plan C failure occur? Blocks the
    decision to build the app.
 
+5. Is a repeated tap enough when a single tap is ignored, or does the
+   signal also need to appear on her computer screen? Blocks whether
+   Plan B alone is the design or whether a computer-side alert is added.
+   Needs from Jake: which computer Cara uses (Mac or Windows) and whether
+   she accepts a silent on-screen alert there.
+
 ## What to do first
 
-Ask Jake for the outcome of the delivery test (README, end of Plan A):
-notification visible on the Watch with nothing felt, or no notification
-at all. Then walk him through the Plan B setup in
+The delivery test is done (open question 1). Ask Jake the two things
+open question 5 needs, then walk him through the Plan B setup in
 docs/plan-b-shortcuts-pushover.md, and record each test outcome as a
 dated line in the README's Status section.
 

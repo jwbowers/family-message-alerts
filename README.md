@@ -124,3 +124,12 @@ fails Cara in practice.
   Plan B adjusted (sound "none" in the API call, Critical Alerts left
   off, Focus passage via allowed app, Watch in Silent Mode) and Plan A's
   Emergency Bypass step dropped.
+- 2026-10-26: delivery test done (phone locked, Watch on wrist). The tap
+  arrives and Cara feels it when she attends to it. She ignores it while
+  working at her computer. So the failure is attention, not delivery or
+  strength, and Wrist Detection and band fit are not the problem. Open
+  question raised by this result: whether a repeated tap (Plan B) is
+  enough when a single tap is ignored, or whether the signal also needs
+  to appear on the computer screen, where her attention is. Jake to say
+  which computer she uses and whether a silent on-screen alert is
+  acceptable to her.
