@@ -170,8 +170,8 @@ fails Cara in practice.
 - 2026-10-26: Jake changed Plan B's sound value from "none" to
   "vibrate". Pushover's API documentation lists "vibrate" as "Vibrate
   Only" and "none" as "None (silent)". Neither plays a tone, and only
-  "vibrate" names a vibration. docs/plan-b-shortcuts-pushover.md was
-  rewritten as a checklist to follow with Cara: the two strings from the
-  website, the app settings, a delivery test from the website form, the
-  Shortcuts automation (built in the Shortcuts app on the iPhone), and
-  the end-to-end test.
+  "vibrate" names a vibration. We rewrote
+  docs/plan-b-shortcuts-pushover.md as a checklist to follow with Cara.
+  It covers the two strings from the website, the app settings, a
+  delivery test from the website form, the Shortcuts automation (built
+  in the Shortcuts app on the iPhone), and the end-to-end test.

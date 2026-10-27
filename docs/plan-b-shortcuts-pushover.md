@@ -24,8 +24,7 @@ dashboard listed her iPhone as "caraiphone" with "Trial Period" beside
 it. Pushover's website says the iPhone app is free for 30 days and then
 needs a one-time $4.99 payment.
 
-Cara makes three choices, and it is easiest to settle them before the
-setup:
+Settle three choices with Cara before the setup:
 
 - Which family members trigger the alert.
 - What the alert says. A fixed "Check Messages" keeps the message text
@@ -40,8 +39,9 @@ setup:
 ## Part 1: on the Pushover website, collect two strings
 
 Do this part in Safari on Cara's iPhone, logged in to
-https://pushover.net. Each string is 30 characters, and on the iPhone
-they can be copied and pasted into Shortcuts in Part 4 instead of typed.
+https://pushover.net. Each string is 30 characters, so you copy them on
+the iPhone and paste them into Shortcuts in Part 4 instead of typing
+them.
 Paste both into a note on her iPhone for now. Anyone holding both
 strings can send alerts to Cara's devices, so delete the note after
 Part 4.
@@ -83,11 +83,12 @@ Part 4.
 ## Part 3: test delivery from the website, before building anything
 
 This test checks whether a vibrate-only emergency alert taps Cara's
-Watch. No one has checked that yet, and if it fails, the Shortcut in
-Part 4 would fail the same way, so we run it before building Part 4.
+Watch. No one has checked that yet. If it does not tap, alerts sent by
+the Shortcut in Part 4 would not tap either, so we run this test before
+building Part 4.
 
 6. Lock Cara's iPhone, with the Watch on her wrist. On
-   https://pushover.net (Jake's Mac is fine), fill in the "Push a
+   https://pushover.net (Jake's Mac works for this), fill in the "Push a
    Notification" form at the top of the dashboard:
    - Device: caraiphone
    - Sound: Vibrate Only
@@ -103,16 +104,16 @@ Part 4 would fail the same way, so we run it before building Part 4.
    may come at a different interval from the 30 seconds that step 8
    sets.
 
-   What should happen: the Watch taps with no tone, and taps again at
-   each repeat until Cara opens the notification and presses Acknowledge
+   If all goes as planned, the Watch taps with no tone and taps again
+   at each repeat until Cara opens the notification and presses Acknowledge
    (on the Watch or the phone). Write down what happened: did the Watch
    tap, did any sound play, and did the taps repeat?
 
    If the Watch does not tap, stop here and record it. A vibrate-only
    alert that does not tap the Watch means Plan B cannot give Cara a
    silent tap as written. The fallback is Pushover's quietest tone,
-   which breaks the no-sound requirement, so it needs Jake and Cara to
-   decide.
+   which breaks the no-sound requirement, so Jake and Cara decide
+   whether to accept it.
 
 ## Part 4: build the Shortcuts automation on the iPhone
 
