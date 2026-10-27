@@ -1,3 +1,11 @@
+---
+next: With Cara, follow docs/plan-b-shortcuts-pushover.md from Part 1; Part 3 sends a test alert from the Pushover website and shows whether a vibrate-only alert taps her Watch
+kind: code
+milestone: Plan B running on Cara's iPhone and Watch, with the Part 5 tests recorded in the README
+sessions_to_milestone: 1
+blocked_on:
+---
+
 # Handoff
 
 2026-10-26. Repository: jwbowers/family-message-alerts. For the session
@@ -31,7 +39,7 @@ plan; this file records what the plan rests on.
    are linked in docs/plan-c-watch-app.md.
 3. Three plans in order of effort: A (settings), B (Shortcuts automation
    POSTs to Pushover's API at emergency priority), C (bespoke iOS +
-   watchOS app). Later plans cost more hours, so each is tried only
+   watchOS app). Later plans take more hours, so each is tried only
    after the one before it fails.
 4. Plan A was tested 2026-10-26 and failed: Cara felt none of the taps.
 5. Plan B is the recommendation. Pushover's emergency priority
@@ -39,7 +47,7 @@ plan; this file records what the plan rests on.
    the notification every 30 seconds until she taps Acknowledge, and
    each re-delivery taps the Watch again.
 6. Everything is set up silent (decision 2026-10-26, when Jake said no
-   alert sound at all): the API call carries sound=none, Pushover's
+   alert sound at all): the API call carries sound=vibrate, Pushover's
    Critical Alerts setting stays off because its one function is forcing
    a sound through silent mode, the Work Focus passes the alerts because
    Pushover joins its allowed apps, the Watch sits in Silent Mode (which
@@ -47,7 +55,7 @@ plan; this file records what the plan rests on.
    was dropped because it too exists to force a sound.
 7. Plan C gets built only after two weeks of Plan B use ending in one of
    the named failures: bursts of texts pile up separate alerts
-   (deduplication is the main thing Plan C adds), acknowledging costs
+   (deduplication is the main thing Plan C adds), acknowledging takes
    too many taps, or routing alert text through Pushover's servers is
    unwanted.
 
@@ -71,10 +79,12 @@ plan; this file records what the plan rests on.
 Each item below was asserted in conversation from memory or from
 secondary sources. Treat none of them as established.
 
-- That a Pushover notification sent with sound=none still taps the
-  Watch. The Watch's tap is governed by its own alert settings rather
-  than the notification's sound, which is the argument for expecting a
-  tap, but the pairing was never run. The first test in
+- That a Pushover notification sent with sound=vibrate still taps the
+  Watch. Pushover's API documentation lists "vibrate" as "Vibrate
+  Only", which is why we expect a tap, but nobody has sent one to
+  Cara's Watch yet. On 2026-10-26 Jake chose "vibrate" to replace
+  sound=none, which the documentation lists as "None (silent)". The
+  first test in
   docs/plan-b-shortcuts-pushover.md exists to check exactly this.
 - That an app on a Focus's allowed list delivers silently during that
   Focus on the Watch as well as the phone.
@@ -108,7 +118,7 @@ secondary sources. Treat none of them as established.
    broken, Plan B inherits the failure, and the fixes are Wrist
    Detection, the Watch's passcode lock, and whether the phone was
    actually locked.
-2. Does sound=none still tap the Watch? Blocks Plan B as a silent
+2. Does sound=vibrate still tap the Watch? Blocks Plan B as a silent
    design; if it does not, the fallback is choosing Pushover's quietest
    tone, which violates the no-sound requirement and needs Jake's call.
 3. Does the allowed-app route deliver on the Watch during her Work
@@ -130,11 +140,13 @@ secondary sources. Treat none of them as established.
 
 ## What to do first
 
-The delivery test is done (open question 1). Ask Jake how the
-surprise-text test went after the two free steps in the README. If Cara
-still missed it, walk him through the Plan B setup in
-docs/plan-b-shortcuts-pushover.md, and record each test outcome as a
-dated line in the README's Status section.
+Jake is setting up Plan B with Cara by following
+docs/plan-b-shortcuts-pushover.md, which was rewritten on 2026-10-26 as a
+checklist. Ask him what happened in its Part 3 test, which sends a
+vibrate-only emergency alert from the Pushover website form: did the
+Watch tap, did any sound play, and did the taps repeat? That answers open
+question 2. Then ask about the Part 5 end-to-end tests, and record each
+outcome as a dated line in the README's Status section.
 
 ## Terms this file uses
 

@@ -43,7 +43,7 @@ Auto-Lock).
 
 ## The plans, in order of effort
 
-We try the plans in order, because each later plan costs more hours and
+We try the plans in order, because each later plan takes more hours and
 adds less signal than the one before it.
 
 ### Plan A: settings only (about ten minutes)
@@ -119,7 +119,7 @@ HTTPS API that anything can call. Its "emergency priority" re-sends a
 notification every 30 seconds (or any longer interval) until the recipient
 taps Acknowledge. The Shortcuts automation on Cara's phone calls the API
 when a family message arrives; her Watch then taps every 30 seconds until
-she acknowledges, and with the API's silent sound option plus the Watch's
+she acknowledges, and with the API's vibrate-only sound plus the Watch's
 own Silent Mode, every one of those alerts is a tap with no tone. Her
 Work Focus lets them through because the Pushover app joins the Focus's
 allowed apps, which delivers silently; Pushover also offers Critical
@@ -131,10 +131,10 @@ Setup steps are in docs/plan-b-shortcuts-pushover.md.
 
 ### Plan C: a bespoke iOS + watchOS app
 
-Building our own app buys deduplication (several rapid messages collapse
+Building our own app adds deduplication (several rapid messages collapse
 into one alert), a one-tap acknowledge screen on the Watch, and no third
-party seeing the alerts. It does not buy a continuous buzz, because the
-platform limit above binds our code too. The architecture,
+party seeing the alerts. It does not make a continuous buzz possible,
+because the platform limit above binds our code too. The architecture,
 the platform limits restated with sources, and the developer-account
 logistics are in docs/plan-c-watch-app.md. We build it only if Plan B
 fails Cara in practice.
@@ -167,3 +167,11 @@ fails Cara in practice.
   text test on a working day. Plan B only if she still misses it.
   Untested: whether Pushover's desktop browser client shows emergency
   alerts with an Acknowledge button on the Mac.
+- 2026-10-26: Jake changed Plan B's sound value from "none" to
+  "vibrate". Pushover's API documentation lists "vibrate" as "Vibrate
+  Only" and "none" as "None (silent)". Neither plays a tone, and only
+  "vibrate" names a vibration. docs/plan-b-shortcuts-pushover.md was
+  rewritten as a checklist to follow with Cara: the two strings from the
+  website, the app settings, a delivery test from the website form, the
+  Shortcuts automation (built in the Shortcuts app on the iPhone), and
+  the end-to-end test.
